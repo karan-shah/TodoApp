@@ -1,0 +1,74 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <div class="container">
+            <div class="navbar-item">
+                  <p class="title" style="color: white"> To-Do List </p>
+            </div>
+            <div class="navbar-menu">
+                  <div class="navbar-end">
+                        <div class="navbar-item has-dropdown is-hoverable">
+                              <a class="navbar-link" href="#"> Log In </a>
+                              <div class="navbar-dropdown is-boxed" role="menu">
+                                    <a href="#" class="navbar-item">
+                                          Logout
+                                    </a>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</nav>
+
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="container">
+            <div class="navbar-item">
+                  <a href="/todo_view/{{id}}" class="button fa fa-chevron-left"> &nbsp; Back </a>
+            </div>
+      </div>
+</nav>
+
+{{!--
+<div class="container">
+      <div class="box">
+            <nav class="level">
+                  <div class="level-left">
+                        <div class="level-item">
+                              <a href="/todo_view/{{id}}" class="button fa fa-chevron-left is-link"> &nbsp; Back </a>
+                        </div>
+                  </div>
+            </nav>
+      </div>
+</div> --}}
+
+<br>
+<div class="container">
+      <div class="box">
+            <form action="/todo_edit/{{id}}" method="post">
+                  <div class="field">
+                        <label class="label"> Modify Name: </label>
+                        <input class="input" type="text" name="text" value="{{text}}">
+                        <br>
+                  </div>
+
+                  <div class="field">
+                        <label class="label">Modify Description: </label>
+                        <input class="input" type="text" name="desc" value="{{desc}}">
+                        <br>
+                  </div>
+
+                  <div class="label">
+                        <label class="checkbox"> Status: </label>
+                        {{#if this.status}}
+                        <input type="checkbox" name="status" checked> Complete
+                        <br> {{else}}
+                        <input type="checkbox" name="status"> Complete
+                        <br> {{/if}}
+                  </div>
+
+                  <div class="field">
+                        <input type="submit" class="button is-link" value="Save">
+                  </div>
+
+            </form>
+      </div>
+
+</div>

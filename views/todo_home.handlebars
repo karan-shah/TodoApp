@@ -1,0 +1,97 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <div class="container">
+            <div class="navbar-item">
+                  <p class="title has-text-white"> To-Do List </p>
+            </div>
+            <div class="navbar-menu">
+                  <div class="navbar-end">
+                        <div class="navbar-item has-dropdown is-hoverable">
+                              <a class="navbar-link" href="#"> Log In </a>
+                              <div class="navbar-dropdown is-boxed" role="menu">
+                                    <a href="#" class="navbar-item">
+                                          Logout
+                                    </a>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</nav>
+
+<br>
+
+<div class="container">
+      {{#each todo}}
+      <div class="box">
+            <div class="level">
+                  <div class="level-left">
+                        <div class="level-item">
+                              <p class="level-item">
+                                    {{#if this.status}}
+                                    <p class="title is-capitalized">
+                                          <span class="icon has-text-success">
+                                                <i class="fa fa-check-square"></i>
+                                          </span>
+                                          <a href="/todo_view/{{this.id}}" style="text-decoration: line-through"> {{this.text}} </a>
+                                          <span class="subtitle">
+                                                <i> ({{timeago time}}) </i>
+                                          </span>
+                                    </p>
+
+                                    {{else}}
+                                    <p class="title  is-capitalized">
+                                          <span class="icon has-text-danger">
+                                                <i class="fa fa-window-close"></i>
+                                          </span>
+                                          <a href="/todo_view/{{this.id}}"> {{this.text}} </a>
+                                          <span class="subtitle">
+                                                <i> ({{timeago time}}) </i>
+                                          </span>
+                                    </p>
+                                    {{/if}}
+                              </p>
+                        </div>
+                  </div>
+                  <div class="level-right">
+                        <a href="/todo_view/{{this.id}}" class="button fa fa-chevron-right"></a>
+                  </div>
+
+            </div>
+      </div>
+      {{/each}}
+
+      <div class="field is-pulled-right">
+            <span class="icon is-large is-pulled-rights">
+                  <a href="/create" class="fa fa-plus-circle fa-3x"> </a>
+            </span>
+      </div>
+</div>
+
+{{!--
+<div class="dropdown">
+      <div class="dropdown-trigger">
+            <button class="button">
+                  <span> Dummy </span>
+                  <span class="icon is-small">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+            </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">
+                        <p> logout </p>
+                  </a>
+            </div>
+      </div>
+</div> --}} {{!--
+<div class="field">
+      <div class="control">
+            <div class="select">
+                  <select>
+                        <option> Login </option>
+                        <option> Logout </option>
+                  </select>
+            </div>
+      </div>
+</div> --}}

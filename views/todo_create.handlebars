@@ -1,0 +1,63 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-item">
+            <p class="title" style="color: white"> To-Do List </p>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#"> Log In </a>
+                    <div class="navbar-dropdown is-boxed" role="menu">
+                        <a href="#" class="navbar-item">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+<div class="container">
+    <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <a href="/" class="button fa fa-chevron-left is-link"> &nbsp; Back </a>
+            </div>
+        </div>
+    </nav>
+</div>        
+
+<br>
+
+<form action="/create" method="post">
+    <div class="container">
+        <div class="box">
+            <div class="field">
+                <label class="label"> Enter Text:</label>
+                <input class="input" type="text" name="todo" placeholder="Enter data" required/>
+            </div>
+
+            <div class="field">
+                <label class="label"> Enter Description: </label>
+                <input class="input" type="text" name="desc" placeholder="Enter description" />
+                <br>
+            </div>
+
+            <div class="label">
+                <label class="checkbox"> Status: </label>
+                <input type="checkbox" name="status" value="complete"> Complete
+                <br>
+            </div>
+
+            <div class="field">
+                <input class="button is-link is-large" type="submit"> {{!--
+                <a href="/" class="button is-link is-large"> Back </a> --}}
+            </div>
+        </div>
+        {{!--
+        <a href="/create" class="button is-link"> Submit </a> --}}
+    </div>
+</form>

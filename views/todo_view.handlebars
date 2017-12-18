@@ -1,0 +1,115 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-item">
+            <p class="title has-text-white"> To-Do List </p>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#"> Log In </a>
+                    <div class="navbar-dropdown is-boxed" role="menu">
+                        <a href="#" class="navbar-item">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-item">
+            <a href="/" class="button fa fa-chevron-left"> &nbsp; Back </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <a href="/todo_edit/{{todo.id}}" class="button"> Edit </a>
+            </div>
+            <div class="navbar-item">
+                <form action="/todo_view/{{todo.id}}" method="post">
+                    <div class="field">
+                        <input type="submit" class="button" value="Mark as completed" name="status">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+<div class="container">
+    <div class="box">
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <div class="content">
+                        <p class="title is-capitalized is-size-4"> {{todo.text}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <p class="subtitle"> {{timeago todo.time}} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <p class="subtitle"> {{todo.desc}} </p>
+        </div>
+
+        <div class="content">
+            <p class="subtitle"> {{#if todo.status}} Complete {{else}} Incomplete {{/if}} </p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="box">
+        <div class="content">
+            <p class="title is-size-5"> Comments: </p>
+        </div>
+
+        {{#each todo.comments}}
+        <div class="rows is-size-4">
+            <div class="row">
+                {{!-- {{#each todo.comments}} --}}
+                <div class="notification">
+                    <p>
+                        <span class="content is-size-4">
+                            {{this.text}} &nbsp;
+                        </span>
+                        <span class="content is-size-6">
+                            <i> {{timeago time}}</i> &nbsp;
+                            <a href="/commentDelete/{{this.id}}/{{this.commentId}}" class="fa fa-remove"> </a>
+                        </span>
+                    </p>
+                </div>
+                {{!-- {{/each}} --}}
+            </div>
+        </div>
+        {{/each}}
+        <br>
+        <form action="/comments/{{todo.id}}" method="post">
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" name="comment" placeholder="Enter your comment here:" required>
+                </div>
+                <div class="control">
+                    <input type="submit" value="Add" class="button is-link">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{!-- {{else}}
+
+<p class="notification">
+    <strong>
+        No comments...
+    </strong>
+</p> --}}
